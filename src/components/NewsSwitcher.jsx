@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NewsCard from "./NewsCards"; 
-import img1 from '../assets/Screenshot 2025-04-17 135437.png'
+import img1 from '../assets/images/Screenshot 2025-04-17 135437.png'
 
 const fakePopularNews = [
   { title: "خبر 1 - الأكثر قراءة", source: "المصدر", img: img1, link: "#" },

@@ -1,4 +1,4 @@
-import {BrowserRouter , Routes , Route} from 'react-router-dom'
+import {BrowserRouter , Routes , Route, HashRouter} from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import Login from './components/Login.jsx';
 import NewLogin from './components/NewLogin';
@@ -6,13 +6,13 @@ import NewLogin from './components/NewLogin';
 function App() {
   return (
     
-    <BrowserRouter>
+    <HashRouter>
     <Routes>
       <Route path='/' element={<HomePage />}/>
       <Route path='/login' element={<Login />}/>
       <Route path='/newlogin' element={<NewLogin />}/>
     </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

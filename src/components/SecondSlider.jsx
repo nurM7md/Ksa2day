@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import slide1 from "../assets/Screenshot 2025-04-17 135437.png";
+import slide1 from "../assets/images/Screenshot 2025-04-17 135437.png";
 import {
   FaAngleDoubleLeft,
   FaAngleDoubleRight,

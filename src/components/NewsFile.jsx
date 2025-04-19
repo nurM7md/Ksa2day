@@ -1,5 +1,5 @@
 import React from 'react';
-import fileImg from '../assets/Screenshot 2025-04-17 135437.png'
+import fileImg from '../assets/images/Screenshot 2025-04-17 135437.png'
 
 const NewsFile = () => {
     const newsItems = [

@@ -23,7 +23,9 @@ const RenderCategory = ({ category, depth = 0 }) => {
             {category.title}
           </a>
         ) : (
-          <span className="text-sm  hover:text-yellow-300 transition duration-300 transform hover:translate-x-1">{category.title}</span>
+          <span className="text-sm  hover:text-yellow-300 transition duration-300 transform hover:translate-x-1">
+            {category.title}
+          </span>
         )}
       </div>
 
@@ -82,16 +84,14 @@ const Navbar = () => {
             { title: "الجزيرة", link: "/okaz" },
           ],
         },
-        { 
-          title: "صحافة الكترونية", 
+        {
+          title: "صحافة الكترونية",
           children: [
             { title: "سبورت السعودية ", link: "/riyadh" },
             { title: "سبق الالكترونية", link: "/okaz" },
             { title: "صدى الالكترونية", link: "/okaz" },
-          ]
-         },
-        
-        
+          ],
+        },
       ],
     },
     {
@@ -106,16 +106,14 @@ const Navbar = () => {
             { title: "الجزيرة", link: "/okaz" },
           ],
         },
-        { 
-          title: "صحافة الكترونية", 
+        {
+          title: "صحافة الكترونية",
           children: [
             { title: "سبورت السعودية ", link: "/riyadh" },
             { title: "سبق الالكترونية", link: "/okaz" },
             { title: "صدى الالكترونية", link: "/okaz" },
-          ]
-         },
-        
-        
+          ],
+        },
       ],
     },
     {
@@ -130,16 +128,14 @@ const Navbar = () => {
             { title: "الجزيرة", link: "/okaz" },
           ],
         },
-        { 
-          title: "صحافة الكترونية", 
+        {
+          title: "صحافة الكترونية",
           children: [
             { title: "سبورت السعودية ", link: "/riyadh" },
             { title: "سبق الالكترونية", link: "/okaz" },
             { title: "صدى الالكترونية", link: "/okaz" },
-          ]
-         },
-        
-        
+          ],
+        },
       ],
     },
     {
@@ -154,16 +150,14 @@ const Navbar = () => {
             { title: "الجزيرة", link: "/okaz" },
           ],
         },
-        { 
-          title: "صحافة الكترونية", 
+        {
+          title: "صحافة الكترونية",
           children: [
             { title: "سبورت السعودية ", link: "/riyadh" },
             { title: "سبق الالكترونية", link: "/okaz" },
             { title: "صدى الالكترونية", link: "/okaz" },
-          ]
-         },
-        
-        
+          ],
+        },
       ],
     },
   ];
@@ -183,7 +177,7 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="bg-red-900 text-white px-6 py-4 shadow-md relative">
+      <nav className="bg-gray-500 text-white px-6 py-4 shadow-md relative">
         <div className="container mx-auto flex justify-center items-center">
           {/* Hamburger Icon - Mobile Only */}
           <div className="md:hidden">
@@ -201,7 +195,9 @@ const Navbar = () => {
                 onClick={() => item === "الأخبار" && setShowNewsOverlay(true)}
               >
                 <span>{item}</span>
-                {item === "الأخبار" && <FaChevronDown className="text-xs mt-1" />}
+                {item === "الأخبار" && (
+                  <FaChevronDown className="text-xs mt-1" />
+                )}
               </div>
             ))}
           </div>

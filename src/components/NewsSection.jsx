@@ -1,6 +1,6 @@
 import React from "react";
 import NewsBox from "./NewsBox";
-import newsImg from '../assets/Screenshot 2025-04-17 135437.png'
+import newsImg from '../assets/images/Screenshot 2025-04-17 135437.png'
 
 
 const NewsSection = () => {
