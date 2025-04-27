@@ -42,14 +42,40 @@ const slides = [
 
 const SecondSlider = () => {
   const [current, setCurrent] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(4); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(interval);
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setSlidesToShow(1); 
+      } else if (window.innerWidth < 1024) {
+        setSlidesToShow(2); 
+      } else {
+        setSlidesToShow(4); 
+      }
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize); 
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length); 
+    }, 500); 
+    return () => clearInterval(interval);
+  }, [current]);
+
+  const getVisibleSlides = () => {
+    const visibleSlides = [];
+    for (let i = 0; i < slidesToShow; i++) {
+      const index = (current + i) % slides.length;
+      visibleSlides.push({ ...slides[index], isActive: i === 2 }); 
+    }
+    return visibleSlides;
+  };
 
   const next = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prev = () =>
@@ -61,29 +87,28 @@ const SecondSlider = () => {
         <div className="flex justify-between items-center mb-6">
           <button
             onClick={() => navigate("/news/الكتاب")}
-            className=" text-red-800 py-2 px-4 text-lg font-medium rounded-md border-2 border-red-800 hover:bg-red-800 hover:text-white transition-all duration-300"
+            className=" text-red-800 py-2 px-4 text-lg font-medium rounded-md border-2 border-red-800 hover:bg-red-800 hover:!text-yellow-300 transition-all duration-300"
           >
             <FaArrowLeft size={18} />
           </button>
 
           <button
             onClick={() => navigate("/news/الكتاب")}
-            className="bg-red-800 text-white py-2 px-6 text-xl font-semibold rounded-md hover:bg-red-700 transition-all duration-300"
+            className="bg-red-800 text-white py-2 px-6 text-xl font-semibold rounded-md hover:bg-red-700 hover:!text-yellow-300  transition-all duration-300"
           >
             الكتاب
           </button>
         </div>
 
         <div className="flex justify-center items-center gap-6">
-          {slides.map((slide, idx) => {
-            const isActive = idx === current;
+          {getVisibleSlides().map((slide, idx) => {
             return (
               <div
                 key={idx}
                 className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg bg-white transition-all duration-500 ${
-                  current === idx
-                    ? "w-96 scale-105"
-                    : "w-72 scale-95 opacity-60 hover:opacity-100 hover:scale-105"
+                  slide.isActive
+                    ? "scale-105 opacity-100 w-96 sm:w-80 md:w-96 lg:w-96"
+                    : "scale-95 opacity-60 w-72 sm:w-64 md:w-72 lg:w-80 hover:opacity-100 hover:scale-105"
                 }`}
                 onClick={() => navigate(slide.link)}
               >
@@ -91,7 +116,7 @@ const SecondSlider = () => {
                   <img
                     src={slide.image}
                     alt={slide.headline}
-                    className="w-full h-full object-cover brightness-90 hover:brightness-100 transition duration-300"
+                    className="w-full h-full object-cover brightness-90 hover:brightness-100 transition duration-500"
                   />
                   <div className="absolute bottom-0 w-full bg-red-900/70 text-center py-3 px-2">
                     <h3 className="text-lg font-semibold text-white mb-1">
@@ -107,13 +132,13 @@ const SecondSlider = () => {
 
         <button
           onClick={prev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-800 text-white shadow-md p-3 rounded-full hover:bg-red-700 transition"
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-800 text-white hover:!text-yellow-300 shadow-md p-3 rounded-full hover:bg-red-700 transition"
         >
           <FaAngleDoubleLeft size={15} />
         </button>
         <button
           onClick={next}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-800 text-white shadow-md p-3 rounded-full hover:bg-red-700 transition"
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-800 text-white hover:!text-yellow-300 shadow-md p-3 rounded-full hover:bg-red-700 transition"
         >
           <FaAngleDoubleRight size={15} />
         </button>

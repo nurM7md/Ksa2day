@@ -71,7 +71,7 @@ const NewsSwitcher = () => {
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={() => setActiveWriterTab("popular")}
-            className={`px-4 py-2 rounded-md text-sm font-semibold border ${
+            className={`px-4 py-2 rounded-md text-sm font-semibold border transition-all duration-300 ${
               activeWriterTab === "popular"
                 ? "bg-white text-red-900"
                 : "text-white border-white"
@@ -81,7 +81,7 @@ const NewsSwitcher = () => {
           </button>
           <button
             onClick={() => setActiveWriterTab("rated")}
-            className={`px-4 py-2 rounded-md text-sm font-semibold border ${
+            className={`px-4 py-2 rounded-md text-sm font-semibold border transition-all duration-300 ${
               activeWriterTab === "rated"
                 ? "bg-white text-red-900"
                 : "text-white border-red-900"
